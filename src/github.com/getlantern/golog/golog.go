@@ -194,7 +194,7 @@ func (l *logger) printf(out io.Writer, buf *bytes.Buffer, skipFrames int, severi
 		defer bufferPool.Put(buf)
 	}
 	buf.WriteString(severity)
-	buf.WriteString(" ")
+	buf.WriteByte(' ')
 	buf.WriteString(l.linePrefix(skipFrames))
 	fmt.Fprintf(buf, message, args...)
 	printContext(buf, err)
